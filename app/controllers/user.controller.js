@@ -1,5 +1,6 @@
 import User from '../models/User.model.js';
 import Bootcamp from '../models/Bootcamp.model.js';
+import bcrypt from 'bcrypt';
 
 export const findAll = async (req, res) => {
 	try {
@@ -67,11 +68,15 @@ export const findUserById = async (req, res) => {
 export const createUser = async (req, res) => {
 	try {
 		let { firstName, lastName, email, password } = req.body;
+
+		const salt = bcrypt.genSaltSync(10);
+		const passwordHashed = bcrypt.hashSync(password, salt);
+
 		const newUser = await User.create({
 			firstName,
 			lastName,
 			email,
-			password,
+			passwordHashed,
 		});
 		res
 			.status(201)
@@ -143,5 +148,10 @@ export const deleteUserById = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-	res.json({ code: 200, message: 'Signin correcto', token: req.token });
+	try {
+		res.json({ code: 200, message: 'Login correcto', token: req.token });
+		
+	} catch (error) {
+		res.json({code:200, message: 'Login incorrecto'})
+	}
 };
