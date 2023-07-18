@@ -4,24 +4,26 @@ Dado el siguiente modelo relacional:
 
 ![db](./public/db.png)
 
+Adicionalmente se utiliza JWT para validar login de usuarios y bcrypt para protección de contraseñas.
+
 ## Setup del proyecto
 
-```
+```console
 npm install
 ```
 
 ### Compilando para desarrollo
 
-```
+```console
 npm run dev
 ```
 
 ### Importante: Se utilizan variables de entorno
 
-Debes configurar tu archivo .env en la raíz del proyecto que coincidan con las utilizadas en:
+Debes configurar tu archivo .env en la raíz del proyecto que coincidan con las mostradas en:
 
 ```
-/app/config/database.config.js
+/.env.example
 ```
 
 ## Contenido del proyecto:
@@ -31,19 +33,23 @@ Debes configurar tu archivo .env en la raíz del proyecto que coincidan con las 
 Lo encuentras en:
 
 ```
-
 /public/bkp_database.sql
-
 ```
+
+### Tambien puedes utilizar los seeds para crear Usuarios y Bootcamps
+
+```console
+node seeds.js
+```
+
+Luego puedes inscribir Usuarios a Bootcamps a través de consultas a la API o simplemente utilzando las vistas de la aplicación cliente.
 
 ### Puedes usar las consultas precargadas e importarlas en Postman
 
 Las encuentras en:
 
 ```
-
 /public/consultas_postman
-
 ```
 
 ## Consultas
