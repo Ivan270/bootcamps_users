@@ -11,7 +11,7 @@ const main = async () => {
 		await sequelize.authenticate();
 		console.log(chalk.blue('Conectado con éxito a la BD'));
 		await sequelize.sync({ force: false, alter: true }); //force: false cuando está en producción.
-		let PORT = process.env.PORT || 3000;
+		let PORT = process.env.PORT || 5000;
 		app.listen(PORT, () =>
 			console.log(
 				chalk.green('Servidor escuchando en http://localhost:' + PORT)
